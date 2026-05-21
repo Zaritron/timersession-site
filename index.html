@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TimerSession — Session Timer for Professionals</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <style>
 :root { --green:#A3B18A; --rose:#CB997E; --cream:#FAF8F4; --dark:#2A2A2A; --muted:#888; --border:#E8E0D5; }
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -78,7 +79,7 @@ h2{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;margin-bo
 .plan-features li{font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
 .plan.featured .plan-features li{border-color:rgba(255,255,255,.1)}
 .plan-features li::before{content:'✓';color:var(--green);font-weight:700}
-.btn-plan{display:block;text-align:center;padding:13px;border-radius:50px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;margin-top:auto}
+.btn-plan{display:block;text-align:center;padding:13px;border-radius:50px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;margin-top:auto;border:none;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif}
 .btn-dark{background:var(--dark);color:white}
 .btn-dark:hover{background:#444}
 .btn-light{background:white;color:var(--dark)}
@@ -215,7 +216,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.6);padding:48px 80px}
         <li>Google Calendar sync</li>
         <li>Priority support</li>
       </ul>
-      <a href="mailto:flexovibegroup@gmail.com?subject=TimerSession Pro Monthly" class="btn-plan btn-light">Get Monthly</a>
+      <button onclick="openCheckout('pri_01ks4m6t3z1xs1jf94nffc3bcq')" class="btn-plan btn-light">Get Monthly</button>
     </div>
 
     <!-- Annual -->
@@ -234,7 +235,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.6);padding:48px 80px}
         <li>Google Calendar sync</li>
         <li>Priority support</li>
       </ul>
-      <a href="mailto:flexovibegroup@gmail.com?subject=TimerSession Pro Annual" class="btn-plan btn-rose">Get Annual</a>
+      <button onclick="openCheckout('pri_01ks4mdtb2xs29vepphjcxec0g')" class="btn-plan btn-rose">Get Annual</button>
     </div>
 
     <!-- Lifetime -->
@@ -254,7 +255,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.6);padding:48px 80px}
         <li>All future updates</li>
         <li>Priority support</li>
       </ul>
-      <a href="mailto:flexovibegroup@gmail.com?subject=TimerSession Lifetime" class="btn-plan btn-dark">Get Lifetime</a>
+      <button onclick="openCheckout('pri_01ks4mqsjemfdnq6yywr3qzwvh')" class="btn-plan btn-dark">Get Lifetime</button>
     </div>
 
   </div>
@@ -294,6 +295,16 @@ footer{background:var(--dark);color:rgba(255,255,255,.6);padding:48px 80px}
 function toggleFaq(el){
   el.nextElementSibling.classList.toggle('open');
   el.querySelector('.faq-arrow').classList.toggle('open');
+}
+
+Paddle.Initialize({
+  token: 'live_fd1c3e4a6943a273fb93be9278c'
+});
+
+function openCheckout(priceId) {
+  Paddle.Checkout.open({
+    items: [{ priceId: priceId, quantity: 1 }]
+  });
 }
 </script>
 </body>
